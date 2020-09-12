@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registeration Form </title>
     <link rel="stylesheet" href="styles.css">
-    <?php include('server.php');?>
+    
 </head>
 <body>
     <div class="header">
         <h2>Register</h2>
     </div>
-    <form method="POST" action="index.php">
-        <?php require('errors.php');?>
+    <form method="POST" action="server.php">
+    
         <div class="input">
             <label for="name">NAME</label>
             <input type="text" name="name" id="name"><br>
             <label for="username">USERNAME</label>
-            <input type="username" id="username"><br>
+            <input type="username" id="username"name="username"><br>
             <label for="Email">EMAIL</label>
-            <input type="email" id="email"><br>
+            <input type="email" id="email"name="email"><br>
             <label for="password">PASSWORD</label>
-            <input type="password" id="password"><br>
+            <input type="password" id="password"name="password"><br>
           <label for="password">CONFIRM PASSWORD</label>
-            <input type="password" id="cpassword"><br>            
+            <input type="password" id="cpassword"name="cpassword"><br>            
 
         </div>
         <div class="input">
