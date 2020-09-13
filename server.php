@@ -12,14 +12,16 @@ if(!$conn)
 
 if(isset($_REQUEST["Register"]))
 {
+
     if($_REQUEST["name"]==""||$_REQUEST["username"]==""||$_REQUEST["email"]==""||$_REQUEST["password"]==""||$_REQUEST["cpassword"]=="")
     {
         echo"all details required";
     }
-    else{
+    else
+    {
         $sql="insert into users(name,username,email,password) values('".$_REQUEST['name']."','".$_REQUEST['username']."','".$_REQUEST['email']."','".$_REQUEST['password']."')";
-        $res=mysqli_query($conn,$sql);
-        if($res)
+        
+        if(mysqli_query($conn,$sql))
         {
          echo"reistered sucessfully";
         }
@@ -27,5 +29,6 @@ if(isset($_REQUEST["Register"]))
         {
         echo"error";
          }
-    } 
+    }
 }
+?>
