@@ -8,26 +8,29 @@ if(!$conn)
 {
     die('Connection aborted');
 }
-
-
-if(isset($_REQUEST["Register"]))
+if(isset($_POST["Register"]))
 {
 
-    if($_REQUEST["name"]==""||$_REQUEST["username"]==""||$_REQUEST["email"]==""||$_REQUEST["password"]==""||$_REQUEST["cpassword"]=="")
+    if($_POST["name"]==""||$_POST["username"]==""||$_POST["email"]==""||$_POST["password"]==""||$_POST["cpassword"]=="")
     {
         echo"all details required";
     }
-    else
+    elseif($_POST["password"] != $_POST["cpassword"])
     {
-        $sql="insert into users(name,username,email,password) values('".$_REQUEST['name']."','".$_REQUEST['username']."','".$_REQUEST['email']."','".$_REQUEST['password']."')";
-        
-        if(mysqli_query($conn,$sql))
+        echo"password not matching";
+    }
+    else{
+        $password=md5($_POST['password']);
+        $sql="insert into users(name,username,email,password) values('".$_POST['name']."','".$_POST['username']."','".$_POST['email']."','".md5($_POST['password'])."')";
+        $res=mysqli_query($conn,$sql);
+        if($res)
         {
-         echo"reistered sucessfully";
+         echo"<script>alert('registered sucessfully');</script>";
         }
         else
         {
-        echo"error";
+            // echo"error";
+            echo "<script>alert('error in registration');</script>";
          }
     }
 }
